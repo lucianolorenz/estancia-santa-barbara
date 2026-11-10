@@ -461,7 +461,7 @@ $("bSet").addEventListener("click",()=>{$("ajustes").open=true;$("ajustes").scro
 let abertos=[];
 addEventListener("beforeprint",()=>{abertos=[...document.querySelectorAll("details")].map(d=>d.open);document.querySelectorAll("details").forEach(d=>d.open=true);});
 addEventListener("afterprint",()=>{document.querySelectorAll("details").forEach((d,i)=>d.open=abertos[i]);});
-$("bPdf").addEventListener("click",()=>{try{window.print();}catch(e){toast("Abra o arquivo no navegador para imprimir");}});
+$("bPdf").addEventListener("click",()=>{const t0=document.title;try{const d=new Date(),p2=x=>String(x).padStart(2,"0");document.title="Estancia-Santa-Barbara-Decisao-"+d.getFullYear()+"-"+p2(d.getMonth()+1)+"-"+p2(d.getDate());toast("Na janela que abrir, escolha Salvar como PDF");setTimeout(()=>{try{window.print();}catch(e){toast("Este navegador bloqueou a impressão. Abra o link no Chrome.");}setTimeout(()=>{document.title=t0},1500);},700);}catch(e){document.title=t0;toast("Este navegador bloqueou a impressão. Abra o link no Chrome.");}});
 // Excel
 function loadX(){return new Promise((ok,no)=>{if(window.XLSX)return ok();const s=document.createElement("script");s.src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js";s.onload=ok;s.onerror=no;document.head.appendChild(s);});}
 $("bXls").addEventListener("click",async()=>{
