@@ -464,7 +464,7 @@ addEventListener("afterprint",()=>{document.querySelectorAll("details").forEach(
 function loadJs(src){return new Promise((ok,no)=>{const e=document.createElement("script");e.src=src;e.onload=ok;e.onerror=no;document.head.appendChild(e);});}
 async function loadPdf(){if(window.jspdf&&window.jspdf.jsPDF&&window.jspdf.jsPDF.API.autoTable)return;await loadJs("https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js");await loadJs("https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js");}
 const fm=v=>typeof v==="number"?(isFinite(v)?v.toLocaleString("pt-BR",{maximumFractionDigits:2}):"-"):(v==null?"":String(v));
-$("bPdf").addEventListener("click",async()=>{
+async function pdfDados(){
  toast("Gerando PDF...");
  try{
   await loadPdf();const {jsPDF}=window.jspdf;const doc=new jsPDF({unit:"pt",format:"a4"});const W=doc.internal.pageSize.getWidth(),M=36;
@@ -494,7 +494,25 @@ $("bPdf").addEventListener("click",async()=>{
   const n=doc.internal.getNumberOfPages();for(let k=1;k<=n;k++){doc.setPage(k);doc.setFont("helvetica","normal");doc.setFontSize(8);doc.setTextColor(130);doc.text("Estância Santa Bárbara  |  "+dt+"  |  página "+k+" de "+n,M,doc.internal.pageSize.getHeight()-20);}
   doc.save("Estancia-Santa-Barbara-Decisao-"+d.getFullYear()+"-"+p2(d.getMonth()+1)+"-"+p2(d.getDate())+".pdf");toast("PDF gerado");
  }catch(e){toast("PDF não disponível. Verifique a internet e tente de novo.");}
-});
+}
+async function pdfTela(){
+ toast("Gerando PDF da tela...");
+ const bar=$("bar"),tp=document.querySelector(".acts"),det=[...document.querySelectorAll("details")],ab=det.map(d=>d.open),bd=bar.style.display;
+ try{
+  await loadPdf();await loadJs("https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js");
+  det.forEach(d=>d.open=true);bar.style.display="none";
+  await new Promise(r=>setTimeout(r,150));
+  const el=document.querySelector(".wrap"),WW=1000;
+  const cv=await html2canvas(el,{backgroundColor:getComputedStyle(document.body).backgroundColor,scale:2,useCORS:true,windowWidth:WW,logging:false});
+  const {jsPDF}=window.jspdf,w=cv.width/2,h=cv.height/2;
+  const doc=new jsPDF({unit:"px",format:[w,h],orientation:w>h?"l":"p",hotfixes:["px_scaling"]});
+  doc.addImage(cv.toDataURL("image/jpeg",.92),"JPEG",0,0,w,h);
+  const d=new Date(),p2=x=>String(x).padStart(2,"0");
+  doc.save("Estancia-Santa-Barbara-Tela-"+d.getFullYear()+"-"+p2(d.getMonth()+1)+"-"+p2(d.getDate())+".pdf");toast("PDF gerado");
+ }catch(e){toast("Não consegui copiar a tela. Gerando relatório em tabelas...");setTimeout(pdfDados,900);}
+ finally{det.forEach((d,i)=>d.open=ab[i]);bar.style.display=bd;}
+}
+$("bPdf").addEventListener("click",pdfTela);
 // Excel
 function loadX(){return new Promise((ok,no)=>{if(window.XLSX)return ok();const s=document.createElement("script");s.src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js";s.onload=ok;s.onerror=no;document.head.appendChild(s);});}
 $("bXls").addEventListener("click",async()=>{
