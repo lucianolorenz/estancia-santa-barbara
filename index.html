@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNiIgZmlsbD0iIzRGRDE4QiIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMuNiAzLjYpIHNjYWxlKC43KSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDYxNDBCIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTcgOWMwLTIgMS41LTMgNS0zczUgMSA1IDN2NWMwIDMtMiA1LTUgNXMtNS0yLTUtNXpNNyA4QzUgOCAzLjUgNi41IDMuNSA1TTE3IDhjMiAwIDMuNS0xLjUgMy41LTNNOS41IDExaC4wMU0xNC41IDExaC4wMU05LjUgMTZoLjAxTTE0LjUgMTZoLjAxIi8+PC9nPjwvc3ZnPg==">
+<link rel="shortcut icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNiIgZmlsbD0iIzRGRDE4QiIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMuNiAzLjYpIHNjYWxlKC43KSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDYxNDBCIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTcgOWMwLTIgMS41LTMgNS0zczUgMSA1IDN2NWMwIDMtMiA1LTUgNXMtNS0yLTUtNXpNNyA4QzUgOCAzLjUgNi41IDMuNSA1TTE3IDhjMiAwIDMuNS0xLjUgMy41LTNNOS41IDExaC4wMU0xNC41IDExaC4wMU05LjUgMTZoLjAxTTE0LjUgMTZoLjAxIi8+PC9nPjwvc3ZnPg==">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<meta name="theme-color" content="#0B0F0D">
+<title>Estância Santa Bárbara - Decisão de aquisição</title>
+<style>
+:root{--bg:#0B0F0D;--surface:#151C18;--ink:#EAF1EC;--muted:#8FA196;--line:#27332B;--accent:#4FD18B;--soft:#1A2B22;--good:#3DDC84;--goodbg:#10301F;--warn:#F2B23A;--warnbg:#3A2C0E;--bad:#FF6B5E;--badbg:#3A1713;--on:#06140B}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:132px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:480px;margin:0 auto;padding:0 max(14px,env(safe-area-inset-right)) 130px max(14px,env(safe-area-inset-left));display:flex;flex-direction:column;gap:12px}
+.main{display:flex;flex-direction:column;gap:12px}.col{display:contents}
+svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.top{position:sticky;top:0;z-index:20;margin:0 -14px;padding:calc(12px + env(safe-area-inset-top)) 14px 8px;background:var(--surface);border-bottom:1px solid var(--line)}
+.row1{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.brand{display:flex;align-items:center;gap:9px;min-width:0}
+.logo{width:36px;height:36px;border-radius:10px;background:var(--accent);color:var(--on);display:grid;place-items:center;flex:none}
+.brand b{display:block;font-size:15px;line-height:1.1}.brand small{color:var(--accent);font-weight:600;font-size:11.5px}
+.acts{display:flex;gap:6px}
+.acts button{display:flex;flex-direction:column;align-items:center;gap:1px;width:46px;padding:5px 0 3px;border:0;border-radius:10px;background:var(--soft);color:var(--accent);font:700 10px system-ui;cursor:pointer}
+.acts button:active{transform:scale(.95)}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:10px 0 2px;scrollbar-width:none}.chips::-webkit-scrollbar{display:none}
+.chips button{display:flex;align-items:center;gap:6px;padding:7px 11px;border-radius:99px;background:var(--bg);border:1px solid var(--line);font:600 12.5px system-ui;white-space:nowrap;color:var(--muted);cursor:pointer}
+.chips button.on{background:var(--accent);color:var(--on);border-color:var(--accent)}
+.chips svg.i{width:16px;height:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:12px}
+.card.st-good{border:2px solid var(--good)}.card.st-warn{border:2px solid var(--warn)}.card.st-bad{border:2px solid var(--bad)}
+.hd{display:flex;align-items:center;gap:9px}
+.hd .ic{width:32px;height:32px;border-radius:9px;background:var(--soft);color:var(--accent);display:grid;place-items:center;flex:none}
+.hd h3{margin:0;font-size:15px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent)}
+.chip{margin-left:auto;display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:99px;font-size:12px;font-weight:700;background:var(--goodbg);color:var(--good)}
+.chip::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.chip.warn{background:var(--warnbg);color:var(--warn)}.chip.bad{background:var(--badbg);color:var(--bad)}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+.f{display:flex;flex-direction:column;gap:4px;min-width:0}
+.f>label{display:flex;align-items:center;gap:5px;font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:700}
+.f>label svg.i{width:14px;height:14px;color:var(--accent)}
+.box{display:flex;align-items:center;gap:4px;border:2px solid var(--line);background:var(--bg);border-radius:10px;padding:0 6px 0 10px;height:46px;min-width:0}
+.st-good .box.sig{border-color:var(--good);background:var(--goodbg)}.st-warn .box.sig{border-color:var(--warn);background:var(--warnbg)}.st-bad .box.sig{border-color:var(--bad);background:var(--badbg)}
+.box.new{border-color:var(--accent);background:var(--soft)}
+.box input{flex:1;min-width:0;width:100%;border:0;background:transparent;color:var(--ink);font:700 21px system-ui;padding:0;outline:0}
+.box input[type=date]{font-size:16px;color-scheme:dark}
+.box u{text-decoration:none;color:var(--muted);font-size:12px;white-space:nowrap}
+.box:focus-within{box-shadow:0 0 0 3px rgba(79,209,139,.25)}
+.stp{display:flex;gap:4px;flex:none}
+.stp button{width:30px;height:30px;border-radius:50%;background:var(--surface);border:1px solid var(--line);color:var(--accent);display:grid;place-items:center;padding:0;cursor:pointer}
+.stp button:active{background:var(--accent);color:var(--on)}
+.stp svg.i{width:14px;height:14px}
+.calc{font-size:11.5px;color:var(--accent);font-weight:500;min-height:1em}
+.hint{font-size:11px;color:var(--muted)}
+.gauge{position:relative;display:flex;height:8px;border-radius:99px;margin-top:2px}
+.gauge i{display:block;height:100%}.gauge i:nth-child(1){background:var(--good);border-radius:99px 0 0 99px}.gauge i:nth-child(2){background:var(--warn)}.gauge i:nth-child(3){background:var(--bad);border-radius:0 99px 99px 0}
+.gauge em{position:absolute;top:-4px;width:4px;height:16px;border-radius:2px;background:var(--ink);box-shadow:0 0 0 2px var(--surface);transition:left .2s}
+.seg{display:grid;grid-template-columns:1fr 1fr;border:2px solid var(--line);border-radius:10px;overflow:hidden;height:46px;position:relative}
+.seg label{display:flex;align-items:center;justify-content:center;gap:6px;font-size:13px;font-weight:700;color:var(--muted);background:var(--bg);cursor:pointer}
+.seg input{position:absolute;opacity:0;width:1px;height:1px}
+.seg input:checked+label{background:var(--accent);color:var(--on)}
+.seg svg.i{width:16px;height:16px}
+.inv{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.inv div,.kpi{background:var(--bg);border-radius:10px;padding:9px 10px;display:flex;flex-direction:column;gap:1px}
+.inv div.m,.kpi{background:var(--soft)}
+.inv span,.kpi span{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:700}
+.inv b{font-size:18px}.inv div.m b{color:var(--accent)}.inv small,.kpi small{color:var(--muted);font-size:11px}
+.kpi2{display:grid;grid-template-columns:1fr 1fr;gap:8px}.kpi b{font-size:21px;color:var(--accent)}
+.dec{border:2px solid var(--good);background:var(--goodbg);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:10px;color:var(--good)}
+.dec.warn{border-color:var(--warn);background:var(--warnbg);color:var(--warn)}.dec.bad{border-color:var(--bad);background:var(--badbg);color:var(--bad)}
+.dec .big{font-size:28px;font-weight:800;text-transform:uppercase;line-height:1.05}
+.dec p{margin:0;color:var(--ink);font-size:13.5px}
+.pr{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.pr div{background:var(--surface);border-radius:10px;padding:8px;color:var(--ink)}
+.pr span{display:block;font-size:10px;text-transform:uppercase;color:var(--muted);font-weight:700}.pr b{font-size:17px}.pr small{display:block;color:var(--muted);font-size:11px}
+.pm{background:var(--surface);border-radius:10px;padding:9px 11px;color:var(--ink);font-size:13px}
+.pm span{display:block;font-size:10px;text-transform:uppercase;color:var(--muted);font-weight:700}
+.bigv{display:flex;align-items:baseline;gap:8px}.bigv b{font-size:30px;color:var(--accent);line-height:1}.bigv small{color:var(--muted);font-size:12px}
+.stk{display:flex;height:12px;border-radius:99px;overflow:hidden;gap:2px}.stk i{display:block;height:100%}
+.leg{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:11.5px;color:var(--muted)}.leg span{display:flex;align-items:center;gap:5px}.leg em{width:9px;height:9px;border-radius:3px;display:inline-block}
+.note{font-size:11.5px;color:var(--muted);background:var(--bg);border-radius:8px;padding:7px 9px}
+details.acc{background:var(--surface);border:1px solid var(--line);border-radius:12px}
+details.acc.mk{background:var(--soft);border:2px solid var(--accent)}
+details.acc>summary{list-style:none;padding:12px 14px;display:flex;align-items:center;gap:10px;font-weight:700;font-size:14px;cursor:pointer}
+details.acc>summary::-webkit-details-marker{display:none}
+details.acc>summary .ic{width:30px;height:30px;border-radius:9px;background:var(--soft);color:var(--accent);display:grid;place-items:center;flex:none}
+details.acc.mk>summary .ic{background:var(--surface)}
+details.acc>summary small{display:block;font-weight:500;color:var(--muted);font-size:11.5px}
+details.acc>summary>svg.i:last-child{margin-left:auto;color:var(--muted);transition:transform .2s}
+details.acc[open]>summary>svg.i:last-child{transform:rotate(180deg)}
+.body{padding:0 14px 14px;display:flex;flex-direction:column;gap:8px}
+.kv{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid var(--line);font-size:13px}.kv span{color:var(--muted)}.kv b{text-align:right}
+.kv.tot b{color:var(--accent)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}th{font-size:10px;text-transform:uppercase;color:var(--muted);text-align:right;padding:4px 4px}th:first-child,td:first-child{text-align:left}
+td{padding:7px 4px;border-top:1px solid var(--line);text-align:right}td small{display:block;color:var(--muted);font-size:10.5px}
+tr.hl td{background:var(--soft)}tr.total td{font-weight:700;color:var(--accent)}
+.pill{padding:1px 6px;border-radius:99px;font-size:10.5px;font-weight:700}.pill.good{background:var(--goodbg);color:var(--good)}.pill.warn{background:var(--warnbg);color:var(--warn)}.pill.bad{background:var(--badbg);color:var(--bad)}
+.mgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.mgrid label{font-size:10px;color:var(--muted);display:flex;flex-direction:column;gap:2px}
+.mgrid input,.pgrid input{width:100%;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:8px 6px;font:600 16px system-ui}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.pgrid label{font-size:10.5px;color:var(--muted);display:flex;flex-direction:column;gap:2px}
+.btn{border:0;border-radius:10px;padding:10px 14px;background:var(--soft);color:var(--accent);font:700 13px system-ui;cursor:pointer}
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:30;display:flex;justify-content:center;pointer-events:none}
+.bar>div{pointer-events:auto;width:100%;max-width:480px;background:var(--good);color:var(--on);padding:12px 16px calc(14px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:10px;border-radius:18px 18px 0 0;box-shadow:0 -6px 18px rgba(0,0,0,.5);cursor:pointer}
+.bar.warn>div{background:var(--warn)}.bar.bad>div{background:var(--bad)}
+.bar b{font-size:15px}.bar small{display:block;font-size:11.5px;opacity:.85}.bar .r{margin-left:auto;text-align:right}
+.dot{width:12px;height:12px;border-radius:50%;background:var(--on)}
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);background:#fff;color:#111;padding:10px 14px;border-radius:12px;font:600 13px system-ui;opacity:0;pointer-events:none;transition:.25s;z-index:50;max-width:90%;text-align:center}
+.toast.on{opacity:1;transform:translateX(-50%)}
+.tag{font-size:10px;background:var(--accent);color:var(--on);padding:2px 6px;border-radius:6px;font-weight:800;margin-left:6px;vertical-align:middle}
+.foot{font-size:11.5px;color:var(--muted);text-align:center;margin:4px 0 0}.foot a{color:var(--accent)}
+.risk{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:7px;font-size:13px}.risk b{color:var(--ink)}
+.scen{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.sc{background:var(--bg);border:2px solid var(--line);border-radius:10px;padding:9px 8px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.sc.good{border-color:var(--good);background:var(--goodbg)}.sc.warn{border-color:var(--warn);background:var(--warnbg)}.sc.bad{border-color:var(--bad);background:var(--badbg)}
+.sc>span{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:700}.sc>b{font-size:17px}.sc small{color:var(--muted);font-size:11px}
+.simbox{background:var(--soft);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:10px}
+.simbox input[type=range]{width:100%;accent-color:var(--accent);height:28px}
+.pcs{display:flex;flex-wrap:wrap;gap:6px}.pcs button{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:99px;padding:7px 12px;font:600 12.5px system-ui;cursor:pointer}.pcs button:active{background:var(--accent);color:var(--on)}
+.simres{display:grid;grid-template-columns:1fr 1fr;gap:8px}.simres div{background:var(--surface);border-radius:10px;padding:9px 10px;display:flex;flex-direction:column;gap:1px}
+.simres span{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:700}.simres b{font-size:17px}.simres small{font-size:11px;color:var(--muted)}
+@media(max-width:350px){.scen{grid-template-columns:1fr}}
+.ord1{order:1}.ord2{order:2}.ord3{order:3}.ord4{order:4}.ord5{order:5}.ord6{order:6}.ord7{order:7}.ord8{order:8}.ord9{order:9}.ord10{order:10}.ord11{order:11}.ord12{order:12}
+@media(max-width:350px){.pr{grid-template-columns:1fr}.inv,.kpi2{grid-template-columns:1fr}.mgrid{grid-template-columns:repeat(3,1fr)}.brand small{display:none}.box input{font-size:19px}}
+@media(min-width:600px){.wrap{max-width:660px}.bar>div{max-width:660px}}
+@media(min-width:980px){
+ html{scroll-padding-top:96px}
+ .wrap{max-width:1180px;padding:0 24px 120px;gap:18px}
+ .top{margin:0 -24px;padding:14px 24px;display:flex;align-items:center;gap:20px;justify-content:space-between}
+ .top .chips{padding:0;order:2;flex:1;justify-content:center}.top .row1{display:contents}
+ .acts{order:3}.acts button{flex-direction:row;width:auto;padding:8px 12px;gap:6px;font-size:12.5px}
+ .brand{order:1}
+ .main{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:18px;align-items:start}
+ .col{display:flex;flex-direction:column;gap:14px;min-width:0}
+ .bar>div{max-width:620px;border-radius:16px;margin-bottom:14px;padding-bottom:14px}
+ .card{padding:18px}.dec{padding:18px}.dec .big{font-size:32px}
+}
+@media(min-width:1500px){.wrap{max-width:1360px}.main{gap:22px}.bar>div{max-width:680px}html{font-size:17px}}
+@media(min-width:2000px){.wrap{max-width:1560px}html{font-size:19px}}
+@media print{
+ @page{size:A4;margin:12mm}
+ :root{--bg:#fff;--surface:#fff;--ink:#111;--muted:#555;--line:#ccc;--accent:#14532d;--soft:#eef5f0;--good:#14532d;--goodbg:#e6f4ea;--warn:#8a5a00;--warnbg:#fdf3dc;--bad:#9b2c20;--badbg:#fbe5e1;--on:#fff}
+ body{font-size:12px}.top .acts,.chips,.bar,.toast,.stp,.noprint{display:none!important}.main{display:flex!important;flex-direction:column}.col{display:contents!important}.wrap{max-width:none!important}
+ .top{position:static;border:0;padding:0 0 8px}.wrap{max-width:none;padding:0}.card,details.acc,.dec{break-inside:avoid}
+ details.acc>summary>svg.i:last-child{display:none}
+}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="home" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7M5 10v10h14V10M10 20v-6h4v6"/></symbol>
+<symbol id="pdf" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6zM14 3v4h4M9 13h6M9 17h6"/></symbol>
+<symbol id="xls" viewBox="0 0 24 24"><path d="M4 5h16v14H4zM4 10h16M4 15h16M10 5v14"/></symbol>
+<symbol id="gear" viewBox="0 0 24 24"><path d="M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></symbol>
+<symbol id="cow" viewBox="0 0 24 24"><path d="M7 9c0-2 1.5-3 5-3s5 1 5 3v5c0 3-2 5-5 5s-5-2-5-5zM7 8C5 8 3.5 6.5 3.5 5M17 8c2 0 3.5-1.5 3.5-3M9.5 11h.01M14.5 11h.01M9.5 16h.01M14.5 16h.01"/></symbol>
+<symbol id="scale" viewBox="0 0 24 24"><path d="M7 9h10l2 11H5zM12 3.5a2.2 2.2 0 1 0 0 4.4 2.2 2.2 0 0 0 0-4.4z"/></symbol>
+<symbol id="tag" viewBox="0 0 24 24"><path d="M3 12V4h8l10 10-8 8zM7.5 8h.01"/></symbol>
+<symbol id="cal" viewBox="0 0 24 24"><path d="M4 6h16v14H4zM4 10h16M8 3v4M16 3v4"/></symbol>
+<symbol id="target" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM12 12h.01"/></symbol>
+<symbol id="leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-14 15-14 0 10-6 15-14 15M5 19l8-8"/></symbol>
+<symbol id="truck" viewBox="0 0 24 24"><path d="M2 6h12v10H2zM14 9h4l3 3v4h-7zM6 19a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM17 19a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/></symbol>
+<symbol id="cross" viewBox="0 0 24 24"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"/></symbol>
+<symbol id="pct" viewBox="0 0 24 24"><path d="M19 5L5 19M7 5a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM17 15a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/></symbol>
+<symbol id="trend" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-9M15 6h6v6"/></symbol>
+<symbol id="coins" viewBox="0 0 24 24"><path d="M12 4c-4 0-7 1.3-7 3s3 3 7 3 7-1.3 7-3-3-3-7-3zM5 7v5c0 1.7 3 3 7 3s7-1.3 7-3V7M5 12v5c0 1.7 3 3 7 3s7-1.3 7-3v-5"/></symbol>
+<symbol id="bank" viewBox="0 0 24 24"><path d="M3 10l9-6 9 6M5 10v8M9 10v8M15 10v8M19 10v8M3 20h18"/></symbol>
+<symbol id="ok" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM8 12l3 3 5-6"/></symbol>
+<symbol id="dn" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+<symbol id="up" viewBox="0 0 24 24"><path d="M6 15l6-6 6 6"/></symbol>
+<symbol id="plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+<symbol id="arroba" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></symbol>
+</defs></svg>
+
+<noscript><div style="background:#F2B23A;color:#06140B;padding:12px 14px;font:600 14px system-ui;text-align:center">Este arquivo precisa de JavaScript. Abra no Safari ou no Chrome (não na pré-visualização do WhatsApp ou de Arquivos).</div></noscript>
+<div class="wrap">
+ <div class="top">
+  <div class="row1">
+   <div class="brand"><span class="logo"><svg class="i"><use href="#home"/></svg></span><div><b>Estância Santa Bárbara</b><small>Decisão de aquisição</small></div></div>
+   <div class="acts">
+    <button id="bPdf"><svg class="i"><use href="#pdf"/></svg>PDF</button>
+    <button id="bXls"><svg class="i"><use href="#xls"/></svg>Excel</button>
+    <button id="bSet"><svg class="i"><use href="#gear"/></svg>Ajustes</button>
+   </div>
+  </div>
+  <div class="chips" id="chips">
+   <button data-t="lote" class="on"><svg class="i"><use href="#cow"/></svg>Lote</button>
+   <button data-t="decisao"><svg class="i"><use href="#ok"/></svg>Decisão</button>
+   <button data-t="ganho"><svg class="i"><use href="#trend"/></svg>Ganho</button>
+   <button data-t="custos"><svg class="i"><use href="#coins"/></svg>Custos</button>
+   <button data-t="mercado"><svg class="i"><use href="#bank"/></svg>Mercado</button>
+  </div>
+ </div>
+ <div class="main">
+<div class="col">
+<section class="card ord1" id="lote">
+  <div class="hd"><span class="ic"><svg class="i"><use href="#cow"/></svg></span><h3>Lote</h3><span class="chip" id="chip">Vale a pena</span></div>
+  <div class="grid2">
+   <div class="f"><label><svg class="i"><use href="#scale"/></svg>Peso médio</label>
+    <div class="box sig"><input id="peso" type="number" inputmode="decimal" value="360"><u>kg</u><span class="stp"><button data-t="peso" data-s="-5"><svg class="i"><use href="#minus"/></svg></button><button data-t="peso" data-s="5"><svg class="i"><use href="#plus"/></svg></button></span></div></div>
+   <div class="f"><label><svg class="i"><use href="#cow"/></svg>Quantidade</label>
+    <div class="box sig"><input id="qtd" type="number" inputmode="numeric" value="40"><u>cab.</u><span class="stp"><button data-t="qtd" data-s="-1"><svg class="i"><use href="#minus"/></svg></button><button data-t="qtd" data-s="1"><svg class="i"><use href="#plus"/></svg></button></span></div></div>
+  </div>
+  <div class="f"><label><svg class="i"><use href="#scale"/></svg>Faixa de peso de compra</label><div class="gauge" id="gPeso"><i></i><i></i><i></i><em></em></div><span class="hint" id="pesoHint"></span></div>
+  <div class="f"><label><svg class="i"><use href="#tag"/></svg>Preço pedido</label>
+   <div class="box sig"><input id="preco" type="number" inputmode="decimal" step="0.05" value="13.80"><u>R$/kg</u><span class="stp"><button data-t="preco" data-s="-0.05"><svg class="i"><use href="#minus"/></svg></button><button data-t="preco" data-s="0.05"><svg class="i"><use href="#plus"/></svg></button></span></div>
+   <span class="calc" id="precoCab"></span>
+   <div class="gauge" id="gPreco"><i></i><i></i><i></i><em></em></div><span class="hint" id="precoHint"></span></div>
+  <div class="grid2">
+   <div class="f"><label><svg class="i"><use href="#target"/></svg>Peso de venda</label><div class="box"><input id="pvenda" type="number" inputmode="decimal" value="590"><u>kg</u></div></div>
+   <div class="f"><label><svg class="i"><use href="#cal"/></svg>Data de entrada</label><div class="box"><input id="data" type="date"></div></div>
+  </div>
+  <div class="f"><label><svg class="i"><use href="#leaf"/></svg>Sistema de engorda</label>
+   <div class="seg"><input type="radio" name="sis" id="sisN"><label for="sisN"><svg class="i"><use href="#cow"/></svg>Campo nativo</label><input type="radio" name="sis" id="sisA" checked><label for="sisA"><svg class="i"><use href="#leaf"/></svg>Nativo + azevém</label></div>
+   <span class="calc" id="sisCalc"></span></div>
+ </section>
+
+ <section class="card ord5" id="custos">
+  <div class="hd"><span class="ic"><svg class="i"><use href="#coins"/></svg></span><h3>Custos de entrada</h3></div>
+  <div class="grid2">
+   <div class="f"><label><svg class="i"><use href="#truck"/></svg>Frete do lote</label><div class="box"><u>R$</u><input id="frete" type="number" inputmode="decimal" value="4000"></div><span class="calc" id="freteCalc"></span></div>
+   <div class="f"><label><svg class="i"><use href="#pct"/></svg>Comissão</label><div class="box new"><input id="com" type="number" inputmode="decimal" step="0.5" value="2"><u>%</u><span class="stp"><button data-t="com" data-s="-0.5"><svg class="i"><use href="#minus"/></svg></button><button data-t="com" data-s="0.5"><svg class="i"><use href="#plus"/></svg></button></span></div><span class="calc" id="comCalc"></span></div>
+   <div class="f"><label><svg class="i"><use href="#cross"/></svg>Veterinários</label><div class="box"><u>R$</u><input id="vet" type="number" inputmode="decimal" value="80"><u>/cab.</u></div><span class="calc" id="vetCalc"></span></div>
+   <div class="f"><label><svg class="i"><use href="#gear"/></svg>Produção</label><div class="box"><u>R$</u><input id="prod" type="number" inputmode="decimal" value="0"><u>/cab.</u></div><span class="calc" id="prodCalc"></span></div>
+   <div class="f" id="azWrap"><label><svg class="i"><use href="#leaf"/></svg>Azevém</label><div class="box"><u>R$</u><input id="az" type="number" inputmode="decimal" value="0"><u>/cab.</u></div><span class="calc" id="azCalc"></span></div>
+  </div>
+ </section>
+
+ <section class="card ord6"><div class="hd"><span class="ic"><svg class="i"><use href="#coins"/></svg></span><h3 style="color:var(--muted)">Investimento</h3></div><div class="inv" id="inv"></div></section>
+
+ </div>
+<div class="col">
+<section id="decisao" class="ord2"><div class="dec" id="verdict"></div></section>
+
+ <section class="card ord3" id="ganho">
+  <div class="hd"><span class="ic"><svg class="i"><use href="#home"/></svg></span><h3>Gado posto na fazenda</h3></div>
+  <div class="kpi2"><div class="kpi"><span>Por cabeça</span><b id="pfCab"></b><small>valor de cada boi na entrada</small></div><div class="kpi"><span>Por kg</span><b id="pfKg"></b><small>sobre o peso de entrada</small></div></div>
+  <div class="stk" id="stk"></div><div class="leg" id="leg"></div>
+ </section>
+ <section class="card ord4">
+  <div class="hd"><span class="ic"><svg class="i"><use href="#trend"/></svg></span><h3>Ganho bruto estimado</h3></div>
+  <div class="bigv"><b id="gbT"></b><small>no lote</small></div>
+  <div class="kpi2"><div class="kpi"><span>Por cabeça</span><b id="gbCab"></b></div><div class="kpi"><span>Por kg vendido</span><b id="gbKg"></b></div></div>
+  <div class="note" id="gbNota"></div>
+ </section>
+
+ <section class="card ord4" id="cvenda">
+  <div class="hd"><span class="ic"><svg class="i"><use href="#target"/></svg></span><h3>Cenários de venda</h3></div>
+  <div class="note" id="cvNota"></div>
+  <div class="scen" id="scen"></div>
+  <div class="simbox">
+   <div class="f"><label><svg class="i"><use href="#tag"/></svg>Simular variação do preço de venda</label>
+    <div class="box"><input id="simPct" type="number" inputmode="decimal" step="1" value="0"><u>%</u><span class="stp"><button data-t="simPct" data-s="-1" data-neg="1"><svg class="i"><use href="#minus"/></svg></button><button data-t="simPct" data-s="1" data-neg="1"><svg class="i"><use href="#plus"/></svg></button></span></div></div>
+   <input id="simRange" type="range" min="-30" max="30" step="1" value="0" aria-label="Variação do preço de venda">
+   <div class="pcs" id="pcs"><button id="pcP" type="button"></button><button id="pcR" type="button">0%</button><button id="pcO" type="button"></button><button id="pcF" type="button"></button></div>
+   <div class="simres" id="simRes"></div>
+  </div>
+ </section>
+
+ <details class="acc ord7"><summary><span class="ic"><svg class="i"><use href="#xls"/></svg></span><div>Resultado no cenário base<small id="rSub"></small></div><svg class="i"><use href="#dn"/></svg></summary><div class="body"><table id="entrada"></table><table id="resultado"></table><div id="retorno"></div></div></details>
+ <details class="acc ord8"><summary><span class="ic"><svg class="i"><use href="#target"/></svg></span><div>Cenários de ganho de peso x peso de venda<small>9 combinações</small></div><svg class="i"><use href="#dn"/></svg></summary><div class="body"><table id="matriz"></table><div id="sens"></div></div></details>
+  <details class="acc ord8"><summary><span class="ic"><svg class="i"><use href="#trend"/></svg></span><div>Cenários de preço x ganho de peso<small>9 combinações</small></div><svg class="i"><use href="#dn"/></svg></summary><div class="body"><table id="matrizP"></table><div class="note">Linhas: ganho de peso. Colunas: preço de venda. Cada célula traz lucro, retorno ao mês e dias de engorda.</div></div></details>
+ <details class="acc ord9"><summary><span class="ic"><svg class="i"><use href="#arroba"/></svg></span><div>Resumo em arroba<small>@ comprada, vendida e lucro por @</small></div><svg class="i"><use href="#dn"/></svg></summary><div class="body"><div id="arroba"></div><div class="note" id="arrobaNota"></div></div></details>
+ <details class="acc mk ord10" id="mercado"><summary><span class="ic"><svg class="i"><use href="#bank"/></svg></span><div>Gado x aplicação<small id="mkSub">Compara com CDB e LCI</small></div><svg class="i"><use href="#dn"/></svg></summary><div class="body"><div class="note" id="mkHead" style="color:var(--ink)"></div><table id="mkTab"></table><div class="note" id="mkNota"></div></div></details>
+
+ <details class="acc ord11" id="ajustes"><summary><span class="ic"><svg class="i"><use href="#gear"/></svg></span><div>Ajustes e premissas<small>Cotações, rendimento, ganho mensal</small></div><svg class="i"><use href="#dn"/></svg></summary><div class="body">
+  <div class="pgrid" id="pg"></div>
+  <b style="font-size:12px;color:var(--muted)">Ganho mensal, campo nativo (kg/dia)</b><div class="mgrid" id="mgN"></div>
+  <b style="font-size:12px;color:var(--muted)">Ganho mensal, azevém (kg/dia)</b><div class="mgrid" id="mgA"></div>
+  <p class="note">Ganhos de peso: referências técnicas típicas para o RS. Calibre com o histórico real da estância. Venda: Scot Consultoria, boi gordo RS (Oeste e Pelotas), R$ 12,75/kg vivo a prazo de 30 dias, preço bruto, coleta de 04/11/2026; o NESPro/UFRGS marcava R$ 13,00/kg vivo em 28/10/2026. Arroba: 15 kg de carcaça, rendimento de 50% (padrão da Scot para o RS). CDI: 13,65% a.a. (referência de set/2026, confira após o Copom de novembro). Sem custo de pasto ou manejo além dos informados. Compra à vista.</p>
+  <button class="btn" id="reset">Restaurar premissas e limpar dados salvos</button>
+ </div></details>
+<section class="card ord12"><div class="hd"><span class="ic"><svg class="i"><use href="#target"/></svg></span><h3>Riscos principais</h3></div>
+<ul class="risk">
+<li><b>Inverno no campo nativo.</b> De junho a agosto o ganho fica perto de zero. Entrar no outono sem azevém alonga muito o ciclo.</li>
+<li><b>Peso de entrada.</b> O lucro vem do kg que o boi ganha no seu pasto. Quanto mais pesado entra, menos sobra.</li>
+<li><b>Preço do boi na saída.</b> A conta usa a cotação de hoje, mas a venda acontece meses depois. Veja em "Cenários" o efeito de cada R$ 0,50/kg.</li>
+<li><b>Implantação do azevém.</b> Atraso no plantio, seca ou geada forte reduzem o ganho. Use o cenário pessimista como referência.</li>
+<li><b>Sanidade e mortalidade.</b> Acima de 1% de perda, o retorno cai rápido.</li>
+</ul></section>
+</div>
+</div>
+<p class="foot">Fontes: <a href="https://www.scotconsultoria.com.br/cotacoes/boi-gordo/" target="_blank" rel="noopener">Scot Consultoria, cotações boi gordo</a> · <a href="https://bovinos-indices.nesproufrgs.com/" target="_blank" rel="noopener">Painel NESPro/UFRGS</a>. Ferramenta de apoio, não substitui avaliação do lote no campo.</p>
+</div>
+
+<div class="bar" id="bar"><div id="barIn"><span class="dot"></span><div><b id="bT">Vale a pena</b><small id="bS"></small></div><div class="r"><b id="bL"></b><small>lucro do lote</small></div><svg class="i"><use href="#up"/></svg></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const $=id=>document.getElementById(id);
+const MES=["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"];
+const NAT=[0.50,0.45,0.35,0.25,0.10,0.00,-0.05,0.00,0.30,0.60,0.65,0.55];
+const AZ={5:0.60,6:0.90,7:1.00,8:1.10,9:1.00};
+$("mgN").innerHTML=NAT.map((v,i)=>`<label>${MES[i]}<input id="n${i}" type="number" step="0.05" value="${v.toFixed(2)}"></label>`).join("");
+$("mgA").innerHTML=Object.keys(AZ).map(i=>`<label>${MES[i]}<input id="a${i}" type="number" step="0.05" value="${AZ[i].toFixed(2)}"></label>`).join("");
+const PG=[["pv","Boi gordo (R$/kg vivo)",12.75],["pvPess","Preço de venda pessimista (%)",-10],["pvOtim","Preço de venda otimista (%)",10],["pvFav","Percentual favorito do simulador (%)",5],["rend","Rendimento carcaça (%)",50],["fP","Ganho pessimista (%)",80],["fO","Ganho otimista (%)",115],["pAcab","Peso de acabamento (kg)",480],["rAcab","Queda do ganho (%)",15],["fun","Funrural (%)",1.5],["mort","Mortalidade (%)",1],["desc","Desconto na venda (%)",0],["prazo","Prazo de recebimento (dias)",30],["cdi","CDI (% a.a.)",13.65],["meta","Meta (% ao mês)",1.5],["pctCdb","CDB (% do CDI)",100],["pctLci","LCI/LCA (% do CDI)",90]];
+$("pg").innerHTML=PG.map(([k,l,v])=>`<label>${l}<input id="${k}" type="number" step="any" value="${v}"></label>`).join("");
+const MK=[...NAT.map((_,i)=>"n"+i),...Object.keys(AZ).map(i=>"a"+i)];
+const PREM=[...PG.map(x=>x[0]),...MK];
+const SAVE=["simPct","peso","qtd","preco","pvenda","data","frete","com","vet","prod","az",...PREM];
+const DEF={};PREM.forEach(k=>DEF[k]=$(k).value);
+const KEY="proto-decisor-v1";
+const hoje=new Date();$("data").value=new Date(hoje.getTime()-hoje.getTimezoneOffset()*60000).toISOString().slice(0,10);
+try{const s=JSON.parse(localStorage.getItem(KEY)||"null");if(s){SAVE.forEach(k=>{if(s[k]!=null)$(k).value=s[k]});if(s.sis)$(s.sis==="n"?"sisN":"sisA").checked=true;}}catch(e){}
+const num=id=>{const v=parseFloat(String($(id).value).replace(",","."));return isFinite(v)?v:0};
+const brl=v=>v.toLocaleString("pt-BR",{style:"currency",currency:"BRL",maximumFractionDigits:0});
+const brl2=v=>v.toLocaleString("pt-BR",{style:"currency",currency:"BRL",minimumFractionDigits:2,maximumFractionDigits:2});
+const pct=(v,d=1)=>(v*100).toLocaleString("pt-BR",{minimumFractionDigits:d,maximumFractionDigits:d})+"%";
+const n1=v=>v.toLocaleString("pt-BR",{minimumFractionDigits:1,maximumFractionDigits:1});
+const n2=v=>v.toLocaleString("pt-BR",{minimumFractionDigits:2,maximumFractionDigits:2});
+const r05=v=>Math.floor(v*20)/20;
+const mesAno=d=>d.toLocaleDateString("pt-BR",{month:"short",year:"numeric"}).replace(". de "," ").replace(" de "," ");
+const cls=(m,meta,cdi)=>m>=meta?"good":m>=cdi?"warn":"bad";
+const row=(a,t,N,kg,c="")=>`<tr class="${c}"><td>${a}</td><td>${brl(t)}</td><td>${brl2(t/N)}</td><td>${brl2(t/kg)}</td></tr>`;
+const head='<thead><tr><th></th><th>Lote</th><th>Cabeça</th><th>Kg</th></tr></thead>';
+let X={};
+function simDias(p0,alvo,f,S){let w=p0,n=0;const d=new Date(S.start.getTime());
+ while(w<alvo&&n<1500){const m=d.getMonth();let g=(S.sis==="a"&&S.azv[m]!=null)?S.azv[m]:S.nat[m];
+  if(g>0){g*=f;if(w>S.pAcab)g*=(1-S.rAcab);}w+=g;d.setDate(d.getDate()+1);n++;}
+ return w>=alvo?n:Infinity;}
+function calc(L,peso,preco,f,venda,p,S){
+ const {N,frete,ins,COM}=L;const dias=simDias(peso,venda,f,S);if(!isFinite(dias))return{fail:true,dias};
+ const meses=(dias+p.prazo)/30;const compra=N*peso*preco,comissao=compra*COM,insumos=N*ins;
+ const capital=compra+comissao+frete+insumos;const kgVenda=N*(1-p.mort)*venda*(1-p.desc);
+ const bruto=kgVenda*p.pv,funrural=bruto*p.fun,receita=bruto-funrural;const lucro=receita-capital,roi=lucro/capital;
+ const mensal=roi>-1?Math.pow(1+roi,1/meses)-1:-1;
+ const precoPara=m=>{const C=receita/Math.pow(1+m,meses);return (C-frete-insumos)/(N*peso*(1+COM));};
+ const fim=new Date(S.start.getTime());fim.setDate(fim.getDate()+dias);
+ return{dias,meses,fim,compra,comissao,insumos,capital,kgVenda,bruto,funrural,receita,lucro,roi,mensal,precoPara,eqCompra:precoPara(0),eqVenda:capital/(kgVenda*(1-p.fun))};}
+function pesoMax(L,preco,venda,p,S,m){let best=null,st=false;
+ for(let w=150;w<=venda-10;w+=5){const c=calc(L,w,preco,1,venda,p,S);const ok=!c.fail&&c.mensal>=m;if(ok){st=true;best=w}else if(st)break;}return best;}
+function gauge(el,lo,hi,a,b,x){const sp=hi-lo,w=v=>Math.max(0,Math.min(100,(v-lo)/sp*100));const z=el.children,wa=a==null?0:w(a),wb=b==null?wa:Math.max(wa,w(b));
+ z[0].style.width=wa+"%";z[1].style.width=(wb-wa)+"%";z[2].style.width=(100-wb)+"%";z[3].style.left="calc("+w(x)+"% - 2px)";}
+function aplic(capital,dias,cdiAa,pctCdi,isento){const r=Math.pow(1+cdiAa,1/365)-1,g=capital*(Math.pow(1+r*pctCdi,dias)-1);
+ const ir=isento?0:g*(dias<=180?.225:dias<=360?.2:dias<=720?.175:.15);const liq=g-ir;return{liq,ir,mensal:Math.pow(1+liq/capital,30/dias)-1};}
+function setSt(k){["lote","custos"].forEach(i=>{const e=$(i);e.classList.remove("st-good","st-warn","st-bad");e.classList.add("st-"+k)});$("chip").className="chip "+(k==="good"?"":k);
+ $("bar").className="bar "+(k==="good"?"":k);}
+
+function render(){
+ const sis=$("sisN").checked?"n":"a";$("azWrap").hidden=sis!=="a";$("scen").innerHTML="";$("simRes").innerHTML="";$("matrizP").innerHTML="";
+ const p={pv:num("pv"),rend:num("rend")/100,fun:num("fun")/100,mort:num("mort")/100,desc:num("desc")/100,prazo:num("prazo")};
+ const S={sis,start:$("data").value?new Date($("data").value+"T12:00:00"):new Date(),nat:NAT.map((_,i)=>num("n"+i)),azv:{},pAcab:num("pAcab"),rAcab:num("rAcab")/100};
+ Object.keys(AZ).forEach(i=>S.azv[i]=num("a"+i));
+ const peso=num("peso"),preco=num("preco"),N=Math.max(1,Math.round(num("qtd"))),venda=num("pvenda");
+ const COM=Math.max(0,num("com"))/100;
+ const frete=Math.max(0,num("frete")),vet=Math.max(0,num("vet")),prod=Math.max(0,num("prod")),az=sis==="a"?Math.max(0,num("az")):0;
+ const L={N,frete,ins:vet+prod+az,COM};
+ const meta=num("meta")/100,cdi=Math.pow(1+num("cdi")/100,1/12)-1;
+ const F=[["Pessimista",num("fP")/100],["Base",1],["Otimista",num("fO")/100]];
+ try{const o=Object.fromEntries(SAVE.map(k=>[k,$(k).value]));o.sis=sis;localStorage.setItem(KEY,JSON.stringify(o));}catch(e){}
+ $("precoCab").textContent=peso>0?brl2(peso*preco)+" por cabeça":"";
+ $("freteCalc").textContent=peso>0?brl2(frete/N)+"/cab. · "+brl2(frete/(N*peso))+"/kg":"";
+ $("comCalc").textContent=brl(N*peso*preco*COM)+" no lote";
+ $("vetCalc").textContent=brl(vet*N)+" no lote";$("prodCalc").textContent=brl(prod*N)+" no lote";$("azCalc").textContent=brl(az*N)+" no lote";
+ const v=$("verdict");
+ const falha=(t,msg)=>{$("pesoHint").textContent="";setSt("bad");$("chip").textContent=t;v.className="dec bad";v.innerHTML=`<div class="big">${t}</div><p>${msg}</p>`;$("bT").textContent=t;$("bS").textContent="";$("bL").textContent="-";};
+ if(!(peso>0&&preco>0&&venda>0&&p.rend>0)){setSt("warn");$("chip").textContent="Confira";v.className="dec warn";v.innerHTML='<div class="big">Confira os dados</div><p>Preencha peso, preço, quantidade e peso de venda.</p>';$("bT").textContent="Confira os dados";$("bS").textContent="";$("bL").textContent="-";return;}
+ if(peso>=venda){falha("Não vale","O peso de compra precisa ser menor que o de venda ("+venda+" kg).");return;}
+ const base=calc(L,peso,preco,1,venda,p,S);
+ if(base.fail){falha("Não atinge o peso","Nesse sistema e data o lote não chega a "+venda+" kg em 4 anos.");return;}
+ const pess=calc(L,peso,preco,F[0][1],venda,p,S);
+ const maximo=r05(base.precoPara(meta));const abrirCalc=pess.fail?maximo-1:r05(pess.precoPara(meta));
+ const abrir=Math.min(abrirCalc,r05(preco-0.5));const alvo=Math.min(r05((abrirCalc+maximo)/2),r05(preco-0.25));
+ const pMeta=pesoMax(L,preco,venda,p,S,meta),pCdi=pesoMax(L,preco,venda,p,S,cdi);
+ $("sisCalc").textContent=`${Math.round(base.dias)} dias de engorda · venda em ${mesAno(base.fim)}`;
+ let k,titulo,txt;
+ if(base.mensal>=meta){k="good";titulo="Vale a pena";txt=`No cenário base o retorno é de ${pct(base.mensal,2)} ao mês, acima da sua meta de ${pct(meta,2)}. Ainda assim, tente fechar mais baixo.`;}
+ else if(base.mensal>=cdi){k="warn";titulo="Só negociando";txt=`No preço pedido rende ${pct(base.mensal,2)} ao mês: bate o CDI (${pct(cdi,2)}), mas fica abaixo da meta de ${pct(meta,2)}. Feche até ${brl2(maximo)}/kg.`;}
+ else{k="bad";titulo="Não vale nesse preço";txt=`No preço pedido rende ${pct(base.mensal,2)} ao mês, abaixo do CDI (${pct(cdi,2)}). Só compensa até ${brl2(maximo)}/kg.`;}
+ const pc=x=>`<small>${brl(x*peso)}/cab.</small>`;
+ const pmTxt=pMeta?`até <b>${pMeta} kg</b> para bater a meta`:"nenhum peso bate a meta neste preço";
+ const pcTxt=pCdi?`até <b>${pCdi} kg</b> para bater o CDI`:"nenhum peso bate o CDI";
+ v.className="dec "+(k==="good"?"":k);
+ v.innerHTML=`<div class="big">${titulo}</div><p>${txt}</p><div class="pr"><div><span>Abrir em</span><b>${brl2(abrir)}</b>${pc(abrir)}</div><div><span>Fechar em</span><b>${brl2(alvo)}</b>${pc(alvo)}</div><div><span>Máximo</span><b>${brl2(maximo)}</b>${pc(maximo)}</div></div><div class="pm"><span>Peso máximo para comprar</span>${pmTxt} · ${pcTxt}. Lote atual: ${peso} kg.</div>`;
+ setSt(k);$("chip").textContent=k==="good"?"Vale a pena":k==="warn"?"Só negociando":"Não vale";
+ $("bT").textContent=titulo;$("bS").textContent=pct(base.mensal,2)+" ao mês";$("bL").textContent=brl(base.lucro);
+ const prCdi=base.precoPara(cdi),prMeta=base.precoPara(meta);
+ gauge($("gPreco"),Math.min(abrir,preco)-0.5,Math.max(prCdi,preco)+0.5,prMeta,prCdi,preco);
+ $("precoHint").textContent=`Verde até ${brl2(r05(prMeta))} · amarelo até ${brl2(r05(prCdi))} · acima, vermelho`;
+ const loP=Math.max(100,Math.min(peso,pMeta||peso,pCdi||peso)-80);
+ gauge($("gPeso"),loP,venda,pMeta,pCdi,peso);
+ $("pesoHint").textContent=pMeta?`Verde até ${pMeta} kg · amarelo até ${pCdi} kg · acima, vermelho`:pCdi?`Amarelo até ${pCdi} kg · acima, vermelho`:"Neste preço nenhum peso bate o CDI";
+ const custosExtra=base.comissao+frete+L.ins*N;
+ $("inv").innerHTML=[["Compra (lote)",brl(base.compra),`${N} cab. × ${brl(peso*preco)}`,""],["Com custos (lote)",brl(base.capital),`+ ${brl(custosExtra)} de custos`,"m"],["Por cabeça",brl2(peso*preco),`só a compra · ${brl2(preco)}/kg`,""],["Por cabeça c/ custos",brl2(base.capital/N),`${brl2(base.capital/(N*peso))}/kg efetivo`,"m"]].map(([a,b,c,kk])=>`<div class="${kk}"><span>${a}</span><b>${b}</b><small>${c}</small></div>`).join("");
+ // NOVO: posto na fazenda
+ const cab=base.capital/N;$("pfCab").textContent=brl2(cab);$("pfKg").textContent=brl2(base.capital/(N*peso));
+ const parts=[["Compra",peso*preco,"#3DDC84"],["Comissão",base.comissao/N,"#F2B23A"],["Frete",frete/N,"#5BB4E8"],["Insumos",L.ins,"#FF6B5E"]];
+ $("stk").innerHTML=parts.map(([a,b,c])=>`<i style="width:${Math.max(1,b/cab*100)}%;background:${c}"></i>`).join("");
+ $("leg").innerHTML=parts.map(([a,b,c])=>`<span><em style="background:${c}"></em>${a} ${brl(b)}</span>`).join("");
+ // NOVO: ganho bruto
+ const gb=base.bruto-base.capital;
+ $("gbT").textContent=brl(gb);$("gbCab").textContent=brl2(gb/N);$("gbKg").textContent=brl2(gb/base.kgVenda);
+ $("gbNota").textContent=`Venda bruta ${brl(base.bruto)} menos capital ${brl(base.capital)}. Antes de Funrural e impostos.`;
+ const kgC=N*peso;
+ $("entrada").innerHTML=head+'<tbody>'+row("Compra",base.compra,N,kgC)+row(`Comissão (${n1(COM*100)}%)`,base.comissao,N,kgC)+row("Frete",frete,N,kgC)+row("Veterinários",vet*N,N,kgC)+row("Produção",prod*N,N,kgC)+(sis==="a"?row("Azevém",az*N,N,kgC):"")+row("Capital investido",base.capital,N,kgC,"total")+'</tbody>';
+ const kgV=base.kgVenda;
+ $("resultado").innerHTML=head+'<tbody>'+row("Venda bruta",base.bruto,N,kgV)+row("(-) Funrural",-base.funrural,N,kgV)+row("Receita líquida",base.receita,N,kgV)+row("(-) Capital",-base.capital,N,kgV)+row("Lucro",base.lucro,N,kgV,"total")+'</tbody>';
+ $("rSub").textContent=`Lucro ${brl(base.lucro)} · ROI ${pct(base.roi)}`;
+ const ret=[["Sistema",sis==="a"?"Nativo + azevém":"Campo nativo"],["Dias até "+venda+" kg",Math.round(base.dias)+" dias"],["Venda prevista",mesAno(base.fim)],["Ganho médio",n2((venda-peso)/base.dias)+" kg/dia"],["Ciclo até o dinheiro voltar",n1(base.meses)+" meses"],["ROI do ciclo",pct(base.roi)],["Retorno mensal",pct(base.mensal,2)+" (CDI "+pct(cdi,2)+")"],["Equilíbrio na compra",brl2(base.eqCompra)+"/kg"],["Boi gordo mínimo p/ empatar",brl2(base.eqVenda)+"/kg"]];
+ $("retorno").innerHTML=ret.map(([a,b])=>`<div class="kv"><span>${a}</span><b>${b}</b></div>`).join("");
+ const VS=[venda-10,venda,venda+10];const mat=[];
+ let h='<thead><tr><th>Ganho de peso</th>'+VS.map(x=>`<th>${x} kg</th>`).join("")+'</tr></thead><tbody>';
+ F.forEach(([nome,f],i)=>{h+=`<tr class="${i===1?"hl":""}"><td>${nome}<small>${Math.round(f*100)}%</small></td>`;
+  VS.forEach(x=>{const c=x>peso?calc(L,peso,preco,f,x,p,S):{fail:true};
+   mat.push([nome,x,c.fail?"Não atinge":Math.round(c.lucro),c.fail?"":Math.round(c.mensal*10000)/100,c.fail?"":Math.round(c.dias)]);
+   h+=c.fail?`<td>Não atinge</td>`:`<td>${brl(c.lucro)}<small><span class="pill ${cls(c.mensal,meta,cdi)}">${pct(c.mensal,2)}</span> ${Math.round(c.dias)}d</small></td>`;});h+='</tr>';});
+ $("matriz").innerHTML=h+'</tbody>';
+ const k25=N*peso*0.25*(1+COM),v50=N*(1-p.mort)*venda*(1-p.desc)*0.5*(1-p.fun);
+ $("sens").innerHTML=[["R$ 0,25/kg a menos na compra","+"+brl(k25)],["R$ 0,50/kg no boi gordo","± "+brl(v50)],["R$ 1.000 de frete","± "+brl(1000)],["R$ 10/cab. em insumos","± "+brl(10*N)]].map(([a,b])=>`<div class="kv"><span>${a}</span><b>${b}</b></div>`).join("");
+ const kpa=15/p.rend,arC=peso/kpa,arV=venda/kpa,arP=arV-arC;
+ const arr=[["Peso de compra",n1(arC)+" @"],["Peso de venda",n1(arV)+" @"],["@ produzidas por cabeça",n1(arP)+" @"],["Preço pedido",brl2(preco*kpa)+"/@"],["Custo efetivo de compra",brl2(base.capital/N/arC)+"/@"],["Máximo a pagar",brl2(maximo*kpa)+"/@"],["Preço de venda",brl2(p.pv*kpa)+"/@"],["Lucro por @ produzida",brl2(base.lucro/(N*arP))+"/@"]];
+ $("arroba").innerHTML=arr.map(([a,b])=>`<div class="kv"><span>${a}</span><b>${b}</b></div>`).join("");
+ $("arrobaNota").textContent=`1 @ = 15 kg de carcaça = ${n1(kpa)} kg vivo (rendimento ${pct(p.rend,0)}). No RS a referência é o kg vivo.`;
+ const cdiAa=num("cdi")/100,dC=base.dias+p.prazo;
+ const cdb=aplic(base.capital,dC,cdiAa,num("pctCdb")/100,false),lci=aplic(base.capital,dC,cdiAa,num("pctLci")/100,true);
+ const mel=cdb.liq>=lci.liq?["CDB/Tesouro Selic",cdb]:["LCI/LCA",lci];const dif=base.lucro-mel[1].liq,pp=(base.mensal-mel[1].mensal)*100;
+ $("mkHead").textContent=dif>=0?`Investir no lote rende ${brl(dif)} a mais que a melhor aplicação (${mel[0]}), ou +${n1(pp)} p.p. ao mês.`:`Deixar o dinheiro em ${mel[0]} rende ${brl(-dif)} a mais que o lote, sem risco de campo.`;
+ $("mkSub").textContent=dif>=0?`Gado +${brl(dif)} sobre a melhor aplicação`:`Aplicação +${brl(-dif)} sobre o gado`;
+ const mrow=(a,g,m)=>`<tr><td>${a}</td><td>${brl(g)}</td><td>${pct(m,2)}</td></tr>`;
+ $("mkTab").innerHTML='<thead><tr><th>Mesmo capital e prazo</th><th>Ganho</th><th>Ao mês</th></tr></thead><tbody>'+`<tr class="hl"><td>Gado, base</td><td>${brl(base.lucro)}</td><td>${pct(base.mensal,2)}</td></tr>`+(pess.fail?"":mrow("Gado, pessimista",pess.lucro,pess.mensal))+mrow("CDB/Tesouro (líq. IR)",cdb.liq,cdb.mensal)+mrow("LCI/LCA (isento)",lci.liq,lci.mensal)+'</tbody>';
+ $("mkNota").textContent=`Capital de ${brl(base.capital)} por ${Math.round(dC)} dias, CDI ${pct(cdiAa,2)} a.a. O lucro do gado é antes do imposto rural e carrega risco de preço, peso e sanidade.`;
+ // NOVO: cenários de venda
+ const xP=num("pvPess")/100,xO=num("pvOtim")/100,xF=num("pvFav")/100,xS=num("simPct")/100;
+ const cv=(x,f)=>calc(L,peso,preco,f==null?1:f,venda,Object.assign({},p,{pv:p.pv*(1+x)}),S);
+ const sg=v=>(v>0?"+":"")+n1(v*100)+"%";
+ $("cvNota").textContent=`Preço de venda de hoje: ${brl2(p.pv)}/kg vivo. Pessimista ${sg(xP)}, realista igual a hoje, otimista ${sg(xO)} (ajustável em Ajustes).`;
+ const CV=[["Pessimista",xP],["Realista",0],["Otimista",xO]],cvRows=[];
+ $("scen").innerHTML=CV.map(([nm,x])=>{const c=cv(x);cvRows.push([nm,Math.round(x*1000)/10,Math.round(p.pv*(1+x)*100)/100,Math.round(c.lucro),Math.round(c.mensal*10000)/100]);
+  return `<div class="sc ${cls(c.mensal,meta,cdi)}"><span>${nm}</span><b>${brl2(p.pv*(1+x))}</b><small>${sg(x)} · R$/kg</small><b style="font-size:15px">${brl(c.lucro)}</b><small>lucro do lote</small><small><span class="pill ${cls(c.mensal,meta,cdi)}">${pct(c.mensal,2)} a.m.</span></small></div>`}).join("");
+ const rs=cv(xS);
+ $("simRange").value=Math.max(-30,Math.min(30,Math.round(xS*100)));
+ $("pcP").textContent=sg(xP);$("pcO").textContent=sg(xO);$("pcF").textContent="Favorito "+sg(xF);
+ const dL=rs.lucro-base.lucro;
+ $("simRes").innerHTML=[["Preço de venda",brl2(p.pv*(1+xS))+"/kg",sg(xS)+" sobre hoje"],["Lucro do lote",brl(rs.lucro),(dL>=0?"+":"")+brl(dL)+" x realista"],["Retorno ao mês",pct(rs.mensal,2),rs.mensal>=meta?"acima da meta":rs.mensal>=cdi?"entre CDI e meta":"abaixo do CDI"],["Ganho bruto",brl(rs.bruto-rs.capital),brl2((rs.bruto-rs.capital)/N)+" por cabeça"]].map(([a,b,c])=>`<div><span>${a}</span><b>${b}</b><small>${c}</small></div>`).join("");
+ const cvm=[["Ganho de peso \\ Preço de venda",...CV.map(([nm,x])=>nm+" ("+sg(x)+")")]];
+ let hp='<thead><tr><th>Ganho de peso</th>'+CV.map(([nm,x])=>`<th>${nm}<br>${brl2(p.pv*(1+x))}</th>`).join("")+'</tr></thead><tbody>';
+ F.forEach(([nm,f],i)=>{hp+=`<tr class="${i===1?"hl":""}"><td>${nm}<small>${Math.round(f*100)}%</small></td>`;const line=[nm];
+  CV.forEach(([n2_,x])=>{const c=cv(x,f);line.push(c.fail?"Não atinge":Math.round(c.lucro)+" ("+Math.round(c.mensal*10000)/100+"% a.m.)");
+   hp+=c.fail?`<td>Não atinge</td>`:`<td>${brl(c.lucro)}<small><span class="pill ${cls(c.mensal,meta,cdi)}">${pct(c.mensal,2)}</span> ${Math.round(c.dias)}d</small></td>`;});
+  hp+='</tr>';cvm.push(line);});
+ $("matrizP").innerHTML=hp+'</tbody>';
+ // dados para Excel
+ X={inputs:[["Peso médio (kg)",peso],["Quantidade (cab.)",N],["Preço pedido (R$/kg)",preco],["Peso de venda (kg)",venda],["Data de entrada",$("data").value],["Sistema",sis==="a"?"Nativo + azevém":"Campo nativo"],["Frete do lote (R$)",frete],["Comissão (%)",COM*100],["Veterinários (R$/cab.)",vet],["Produção (R$/cab.)",prod],["Azevém (R$/cab.)",az]],
+  decisao:[["Decisão",titulo],["Retorno ao mês (%)",Math.round(base.mensal*10000)/100],["Abrir (R$/kg)",abrir],["Fechar (R$/kg)",alvo],["Máximo (R$/kg)",maximo],["Peso máx. meta (kg)",pMeta||"-"],["Peso máx. CDI (kg)",pCdi||"-"],["Dias de engorda",Math.round(base.dias)],["Venda prevista",mesAno(base.fim)]],
+  fazenda:[["","Lote (R$)","Por cabeça (R$)","Por kg (R$)"],["Gado posto na fazenda",base.capital,base.capital/N,base.capital/(N*peso)],["Ganho bruto",gb,gb/N,gb/base.kgVenda],["Compra",base.compra,base.compra/N,base.compra/kgC],["Comissão",base.comissao,base.comissao/N,base.comissao/kgC],["Frete",frete,frete/N,frete/kgC],["Insumos",L.ins*N,L.ins,L.ins/peso],["Venda bruta",base.bruto,base.bruto/N,base.bruto/kgV],["Funrural",-base.funrural,-base.funrural/N,-base.funrural/kgV],["Lucro",base.lucro,base.lucro/N,base.lucro/kgV]],
+  cen:[["Cenário","Peso venda","Lucro (R$)","Ao mês (%)","Dias"],...mat],arr,ret,cv:[["Cenário","Variação (%)","Preço de venda (R$/kg)","Lucro (R$)","Ao mês (%)"],...cvRows],cvm,
+  mk:[["Gado base",Math.round(base.lucro),Math.round(base.mensal*10000)/100],["CDB/Tesouro (líq. IR)",Math.round(cdb.liq),Math.round(cdb.mensal*10000)/100],["LCI/LCA",Math.round(lci.liq),Math.round(lci.mensal*10000)/100]]};
+}
+$("simRange").addEventListener("input",()=>{$("simPct").value=$("simRange").value});
+const setSim=v=>{$("simPct").value=v;render();};
+$("pcP").addEventListener("click",()=>setSim(num("pvPess")));$("pcR").addEventListener("click",()=>setSim(0));$("pcO").addEventListener("click",()=>setSim(num("pvOtim")));$("pcF").addEventListener("click",()=>setSim(num("pvFav")));
+document.querySelectorAll("input").forEach(i=>{i.addEventListener("input",render);i.addEventListener("change",render);});
+document.querySelectorAll(".stp button").forEach(b=>b.addEventListener("click",()=>{const i=$(b.dataset.t),s=parseFloat(b.dataset.s);const d=(String(s).split(".")[1]||"").length;{const nv=parseFloat(i.value||0)+s;i.value=(b.dataset.neg?nv:Math.max(0,nv)).toFixed(d);}render();}));
+$("reset").addEventListener("click",()=>{PREM.forEach(k=>$(k).value=DEF[k]);try{localStorage.removeItem(KEY)}catch(e){};render();toast("Premissas restauradas");});
+function toast(t){const e=$("toast");e.textContent=t;e.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove("on"),3200);}
+// navegação
+$("chips").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;const t=$(b.dataset.t);if(t.tagName==="DETAILS")t.open=true;t.scrollIntoView({behavior:"smooth",block:"start"});});
+const secs=["lote","decisao","ganho","custos","mercado"];
+addEventListener("scroll",()=>{let cur="lote",bt=-1e9;const lim=innerWidth>=980?130:180;secs.forEach(s=>{const t=$(s).getBoundingClientRect().top;if(t<lim&&t>bt){bt=t;cur=s;}});document.querySelectorAll("#chips button").forEach(b=>b.classList.toggle("on",b.dataset.t===cur));},{passive:true});
+$("barIn").addEventListener("click",()=>$("decisao").scrollIntoView({behavior:"smooth",block:"start"}));
+$("bSet").addEventListener("click",()=>{$("ajustes").open=true;$("ajustes").scrollIntoView({behavior:"smooth",block:"start"});});
+// PDF
+let abertos=[];
+addEventListener("beforeprint",()=>{abertos=[...document.querySelectorAll("details")].map(d=>d.open);document.querySelectorAll("details").forEach(d=>d.open=true);});
+addEventListener("afterprint",()=>{document.querySelectorAll("details").forEach((d,i)=>d.open=abertos[i]);});
+$("bPdf").addEventListener("click",()=>{try{window.print();}catch(e){toast("Abra o arquivo no navegador para imprimir");}});
+// Excel
+function loadX(){return new Promise((ok,no)=>{if(window.XLSX)return ok();const s=document.createElement("script");s.src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js";s.onload=ok;s.onerror=no;document.head.appendChild(s);});}
+$("bXls").addEventListener("click",async()=>{
+ toast("Gerando Excel...");
+ try{await loadX();const wb=XLSX.utils.book_new();const add=(n,a)=>XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(a),n);
+  add("Entradas",[["Dado","Valor"],...X.inputs]);add("Decisao",[["Item","Valor"],...X.decisao]);add("Fazenda e ganho",X.fazenda);add("Cenarios",X.cen);add("Cenarios de venda",[...X.cv,[],...X.cvm]);
+  add("Arroba",[["Item","Valor"],...X.arr]);add("Retorno",[["Item","Valor"],...X.ret]);add("Premissas",[["Premissa","Valor"],...PG.map(([k,l])=>[l,num(k)])]);add("Mercado",[["Aplicacao","Ganho (R$)","Ao mes (%)"],...X.mk]);
+  XLSX.writeFile(wb,"estancia-santa-barbara-decisao.xlsx");toast("Excel gerado");
+ }catch(e){toast("Excel não disponível aqui. Abra o arquivo no navegador do celular ou computador.");}
+});
+render();
+</script></body></html>
