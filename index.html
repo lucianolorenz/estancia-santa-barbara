@@ -461,7 +461,40 @@ $("bSet").addEventListener("click",()=>{$("ajustes").open=true;$("ajustes").scro
 let abertos=[];
 addEventListener("beforeprint",()=>{abertos=[...document.querySelectorAll("details")].map(d=>d.open);document.querySelectorAll("details").forEach(d=>d.open=true);});
 addEventListener("afterprint",()=>{document.querySelectorAll("details").forEach((d,i)=>d.open=abertos[i]);});
-$("bPdf").addEventListener("click",()=>{const t0=document.title;try{const d=new Date(),p2=x=>String(x).padStart(2,"0");document.title="Estancia-Santa-Barbara-Decisao-"+d.getFullYear()+"-"+p2(d.getMonth()+1)+"-"+p2(d.getDate());toast("Na janela que abrir, escolha Salvar como PDF");setTimeout(()=>{try{window.print();}catch(e){toast("Este navegador bloqueou a impressão. Abra o link no Chrome.");}setTimeout(()=>{document.title=t0},1500);},700);}catch(e){document.title=t0;toast("Este navegador bloqueou a impressão. Abra o link no Chrome.");}});
+function loadJs(src){return new Promise((ok,no)=>{const e=document.createElement("script");e.src=src;e.onload=ok;e.onerror=no;document.head.appendChild(e);});}
+async function loadPdf(){if(window.jspdf&&window.jspdf.jsPDF&&window.jspdf.jsPDF.API.autoTable)return;await loadJs("https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js");await loadJs("https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js");}
+const fm=v=>typeof v==="number"?(isFinite(v)?v.toLocaleString("pt-BR",{maximumFractionDigits:2}):"-"):(v==null?"":String(v));
+$("bPdf").addEventListener("click",async()=>{
+ toast("Gerando PDF...");
+ try{
+  await loadPdf();const {jsPDF}=window.jspdf;const doc=new jsPDF({unit:"pt",format:"a4"});const W=doc.internal.pageSize.getWidth(),M=36;
+  const d=new Date(),p2=x=>String(x).padStart(2,"0"),dt=p2(d.getDate())+"/"+p2(d.getMonth()+1)+"/"+d.getFullYear();
+  doc.setFont("helvetica","bold");doc.setFontSize(17);doc.setTextColor(20,60,40);doc.text("Estância Santa Bárbara",M,48);
+  doc.setFont("helvetica","normal");doc.setFontSize(10.5);doc.setTextColor(90);doc.text("Decisão de aquisição de lote  |  gerado em "+dt,M,64);
+  const dec=(X.decisao[0]||[])[1]||"";doc.setFont("helvetica","bold");doc.setFontSize(14);doc.setTextColor(20,60,40);doc.text(String(dec),M,92);
+  let y=104;
+  const tab=(titulo,rows,head)=>{if(!rows||!rows.length)return;
+   doc.autoTable({startY:y,margin:{left:M,right:M},head:head?[head.map(fm)]:undefined,body:rows.map(r=>r.map(fm)),theme:"grid",
+    styles:{font:"helvetica",fontSize:9,cellPadding:4,textColor:30,lineColor:[210,220,214],lineWidth:.4},headStyles:{fillColor:[34,160,100],textColor:255},
+    alternateRowStyles:{fillColor:[245,249,246]},columnStyles:{0:{fontStyle:"bold"}},
+    didDrawPage:()=>{},
+    willDrawPage:()=>{}});
+   y=doc.lastAutoTable.finalY+16;};
+  const sec=(t,ro,hd)=>{if(y>740){doc.addPage();y=48;}doc.setFont("helvetica","bold");doc.setFontSize(12);doc.setTextColor(20,60,40);doc.text(t,M,y+4);y+=10;tab(t,ro,hd);};
+  sec("Dados do lote",X.inputs,["Dado","Valor"]);
+  sec("Decisão",X.decisao,["Item","Valor"]);
+  sec("Gado posto na fazenda e ganho",X.fazenda.slice(1),X.fazenda[0]);
+  sec("Cenários de venda (preço)",X.cv.slice(1),X.cv[0]);
+  sec("Cenários de preço x ganho de peso",X.cvm.slice(1),X.cvm[0].map((h,k)=>k?h:"Ganho de peso"));
+  sec("Cenários de ganho e peso de venda",X.cen.slice(1),X.cen[0]);
+  sec("Resumo em arroba",X.arr,["Item","Valor"]);
+  sec("Retorno do lote",X.ret,["Item","Valor"]);
+  sec("Gado x aplicações",X.mk,["Aplicação","Ganho (R$)","Ao mês (%)"]);
+  sec("Premissas",PG.map(([k,l])=>[l,num(k)]),["Premissa","Valor"]);
+  const n=doc.internal.getNumberOfPages();for(let k=1;k<=n;k++){doc.setPage(k);doc.setFont("helvetica","normal");doc.setFontSize(8);doc.setTextColor(130);doc.text("Estância Santa Bárbara  |  "+dt+"  |  página "+k+" de "+n,M,doc.internal.pageSize.getHeight()-20);}
+  doc.save("Estancia-Santa-Barbara-Decisao-"+d.getFullYear()+"-"+p2(d.getMonth()+1)+"-"+p2(d.getDate())+".pdf");toast("PDF gerado");
+ }catch(e){toast("PDF não disponível. Verifique a internet e tente de novo.");}
+});
 // Excel
 function loadX(){return new Promise((ok,no)=>{if(window.XLSX)return ok();const s=document.createElement("script");s.src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js";s.onload=ok;s.onerror=no;document.head.appendChild(s);});}
 $("bXls").addEventListener("click",async()=>{
